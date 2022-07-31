@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div onclick="passa()" id="main">
+      <div class="box jadiel">
+        <h3>jadiel</h3>
+        <div id="filho" class="batata"></div>
+      </div>
+      <div class="box daniel">
+        <h3>daniel</h3>
+        <div id="filho" class="none"></div>
+      </div>
+    </div>
+
+    <script>
+      const addPerson = (x) => {
+        const person = document.createElement("div");
+        const name = document.createElement("h3");
+        const batata = document.createElement("div");
+
+        main.appendChild(person);
+        person.className = `box ${x}`;
+
+        person.appendChild(name);
+        name.textContent = x;
+
+        person.appendChild(batata);
+        batata.className = `batata`;
+      };
+
+      var passarBatata = function () {
+        setInterval(() => {
+          removeBatata(".jadiel");
+        }, 2000);
+
+        setInterval(function () {
+          entregaBatata(".daniel");
+        }, 2000);
+      };
+
+      function removeBatata(x) {
+        let elem = document.querySelector(x);
+        elem.children[1].classList.remove("batata");
+        elem.children[1].classList.add("none");
+      }
+
+      function entregaBatata(x) {
+        let elem = document.querySelector(x);
+        elem.children[1].classList.remove("none");
+        elem.children[1].classList.add("batata");
+      }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //entregaBatata(".daniel");
+      var repetirFunc = function (empresa) {
+        var limite = 11;
+        var i = 0;
+
+        var intervalId = setInterval(function () {
+          if (i++ > 11) return clearInterval(intervalId);
+
+          console.log("Texto");
+        }, 2000);
+      };
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //repetirFunc();
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+      //passarBatata();
+      /*
+      setInterval(() => {
+        remove(".jadiel");
+      }, 5000);*/
+    
+    </script>
+  </body>
+</html>

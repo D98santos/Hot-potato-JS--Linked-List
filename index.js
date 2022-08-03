@@ -141,6 +141,8 @@ function removeBatata(x) {
 }
 
 function entregaBatata(x) {
+  console.log(x)
+
   let elem = document.querySelector(x);
   elem.children[1].classList.remove("none");
   elem.children[1].classList.add("batata");
@@ -170,18 +172,27 @@ function jogo(num) {
   let intervalId = setInterval(function () {
     if (i++ >= num) return clearInterval(intervalId);
     entregaBatata(`.${current.element}`);
-    console.log(current.element);
+    console.log(circle.toString())
+
+    console.log(circle.indexOf(current.element));
     let anterior = circle.indexOf(current.element) - 1;
     if (anterior === -1) {
       anterior = circle.size() - 1;
     }
 
     let anta = circle.getElementAt(anterior).element;
+    //console.log(anta)
 
     removeBatata(`.${anta}`);
     if (i === num) {
-      removePerson(`.${current.element}`, current.element);
+  circle.removeAt(circle.indexOf(current.element));
+
+      console.log(current.element+'REMOVEmmmmmmm')
+let test = current.element
+      removePerson(`.${test}`, test);
       console.log(circle.toString())
+      console.log(current.element+'REMOVED')
+
     }
     current = current.next;
   }, 2000);
@@ -194,15 +205,17 @@ function hotbatata(elementsList) {
   }
 }
 
-const rodada = Math.floor(Math.random() * 10) + 1;
+//const rodada = Math.floor(Math.random() * 10) + 1;
 hotbatata(names);
-jogo(rodada);
+
+jogo(5);
 
 const removePerson = (y,z) => {
   let p = document.querySelector(y);
   main.removeChild(p);
 
-  var i = circle.removeAt(circle.indexOf(z));
-  console.log(`yyyyyy${z}`)
-  jogo(rodada);
+  //circle.removeAt(circle.indexOf(z));
+  console.log(z +' remov'+ circle.indexOf(z))
+
+  jogo(5);
 };
